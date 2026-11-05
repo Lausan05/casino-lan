@@ -336,6 +336,72 @@ document.getElementById('result').classList.toggle('win',won);
 document.getElementById('playButton').disabled=false;
 spinning=false;
 }
+
+  // ===== MEJORAS VISUALES CASINO LAN =====
+
+(function(){
+
+const style = document.createElement('style');
+
+style.textContent = `
+
+.juego {
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.juego:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 25px rgba(247,198,83,.35);
+}
+
+button {
+  transition: all .2s ease;
+}
+
+button:hover {
+  filter: brightness(1.2);
+  transform: scale(1.04);
+}
+
+button:active {
+  transform: scale(.96);
+}
+
+#result {
+  transition: all .3s ease;
+}
+
+#result.win {
+  animation: casinoWin 1s ease;
+  color: #ffd700;
+  text-shadow: 0 0 12px #ffd700;
+}
+
+@keyframes casinoWin {
+  0% {transform:scale(.8);opacity:.3}
+  50% {transform:scale(1.15);opacity:1}
+  100% {transform:scale(1);opacity:1}
+}
+
+#modal {
+  animation: casinoModal .35s ease;
+}
+
+@keyframes casinoModal {
+  from {opacity:0;transform:scale(.94)}
+  to {opacity:1;transform:scale(1)}
+}
+
+`;
+
+if(!document.getElementById('casino-effects')){
+  style.id='casino-effects';
+  document.head.appendChild(style);
+}
+
+})();
+
+// ===== FIN DE MEJORAS =====
 </script>
 </body>
 </html>
