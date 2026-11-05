@@ -7,133 +7,291 @@
 <title>Casino Lan</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#090d17;color:white;font-family:Arial,sans-serif}
-header{height:75px;background:#111827;border-bottom:1px solid #293348;display:flex;align-items:center;justify-content:space-between;padding:0 6%}
-.logo{font-size:27px;font-weight:900;color:#f5c451}
+body{margin:0;background:#080d18;color:#fff;font-family:Arial,sans-serif}
+header{height:76px;background:#111a2b;border-bottom:1px solid #344158;display:flex;align-items:center;justify-content:space-between;padding:0 6%}
+.logo{font-size:27px;font-weight:900;color:#f7c653}
 .logo span{color:white}
-.balance{background:#202b3c;padding:12px 20px;border-radius:12px;color:#f5c451;font-weight:bold}
-nav{display:flex;gap:25px;padding:18px 6%;background:#111827}
-nav a{color:#cbd5e1;text-decoration:none;font-size:14px}
-.hero{text-align:center;padding:65px 20px 45px;background:radial-gradient(ellipse at center,#273653,#090d17 70%)}
-.hero h1{font-size:43px;margin:0 0 12px}
-.hero h1 span{color:#f5c451}
-.hero p{color:#aab5c7}
+.balance{background:#25334a;border:1px solid #43516a;padding:13px 20px;border-radius:12px;color:#ffd66b;font-weight:bold}
+nav{padding:18px 6%;background:#111827;display:flex;gap:28px}
+nav a{color:#d5deeb;text-decoration:none;font-size:14px}
+.hero{text-align:center;padding:65px 15px 45px;background:radial-gradient(ellipse at center,#293b5c,#080d18 75%)}
+.hero h1{font-size:42px;margin:0 0 12px}
+.hero h1 span{color:#f7c653}
+.hero p{color:#aebbd0}
 .games{max-width:1100px;margin:35px auto;padding:0 20px}
-.games h2{color:#f5c451}
+.games h2{color:#f7c653}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
-.game{background:linear-gradient(145deg,#202d43,#121a29);border:1px solid #35445d;border-radius:17px;overflow:hidden;text-align:center;padding-bottom:20px;transition:.25s}
-.game:hover{transform:translateY(-6px);border-color:#f5c451}
-.cover{height:155px;display:grid;place-items:center;font-size:75px;background:radial-gradient(circle,#3d4962,#151d2d)}
-.game h3{margin:15px 0 7px}
-.game p{color:#9eacc0;font-size:13px}
-button{background:linear-gradient(135deg,#f8d779,#d89b28);border:0;border-radius:8px;padding:12px 24px;font-weight:bold;cursor:pointer;color:#17120a}
-button:hover{filter:brightness(1.12)}
-footer{text-align:center;color:#68778e;padding:35px}
-.modal{display:none;position:fixed;inset:0;background:#000d;align-items:center;justify-content:center;padding:15px}
-.panel{background:#172236;border:1px solid #46536a;border-radius:18px;padding:30px;text-align:center;width:100%;max-width:440px}
-.reels{display:flex;justify-content:center;gap:12px;font-size:48px;margin:25px 0}
-.reels span{background:#fff;color:#111;border-radius:10px;padding:12px}
-#result{color:#f5c451;min-height:25px}
+.game{background:linear-gradient(145deg,#202e45,#111a2b);border:1px solid #394b68;border-radius:17px;overflow:hidden;text-align:center;padding-bottom:22px;transition:.25s}
+.game:hover{transform:translateY(-6px);border-color:#f7c653}
+.cover{height:155px;display:grid;place-items:center;font-size:78px;background:radial-gradient(circle,#45536d,#172236)}
+.game h3{margin:16px 0 7px}
+.game p{color:#aab8ce;font-size:13px}
+button{border:0;border-radius:9px;padding:12px 24px;font-weight:bold;cursor:pointer;background:linear-gradient(135deg,#ffe18a,#d99b25);color:#201704;transition:.2s}
+button:hover{filter:brightness(1.15);transform:scale(1.03)}
+button:disabled{opacity:.55;cursor:not-allowed;transform:none}
+footer{text-align:center;color:#75849c;padding:40px}
+.modal{display:none;position:fixed;inset:0;background:#020611ed;align-items:center;justify-content:center;padding:15px;z-index:10;overflow-y:auto}
+.panel{background:linear-gradient(145deg,#1c2b43,#0d1525);border:1px solid #596987;border-radius:20px;padding:25px;text-align:center;width:100%;max-width:620px;box-shadow:0 0 60px #000}
+.panel h2{color:#ffd36b;font-size:27px;margin:5px}
+.subtitle{color:#aab8ce;font-size:13px}
+.machine{margin:22px auto;padding:20px;background:linear-gradient(145deg,#e6b74c,#70400b 30%,#d99e28 70%,#53300c);border:5px solid #f9d77a;border-radius:20px;box-shadow:0 0 25px #e6a82b55,inset 0 0 15px #fff7;width:min(100%,470px)}
+.machine-title{font-size:19px;font-weight:900;letter-spacing:4px;color:#fff2c4;text-shadow:0 2px 4px #663800;margin-bottom:15px}
+.reels{display:flex;gap:10px;justify-content:center;background:#101827;padding:12px;border-radius:12px;border:4px solid #f8d77b}
+.reel{height:112px;flex:1;min-width:0;background:linear-gradient(#fff,#e7e7e7);border-radius:8px;display:grid;place-items:center;font-size:53px;box-shadow:inset 0 0 12px #888;overflow:hidden}
+.reel.spinning{animation:shake .11s infinite;filter:blur(2px)}
+@keyframes shake{0%{transform:translateY(-4px)}50%{transform:translateY(4px)}100%{transform:translateY(-4px)}}
+.lights{color:#fff3ac;font-size:13px;letter-spacing:7px;margin-top:13px;text-shadow:0 0 10px #fff}
+.bet-area{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;margin:20px 0}
+.bet-area button{padding:10px 17px;background:#263750;color:white;border:1px solid #61728c}
+.bet-area button.selected{background:#f3c75d;color:#1d1607;border-color:#fff0a9}
+.bet-label{color:#dbe4f2;font-size:14px}
+.spin-button{font-size:18px;padding:15px 45px;box-shadow:0 0 18px #e6ae3b66}
+.result{min-height:35px;color:#ffd66b;font-weight:bold;font-size:17px;margin:15px 0}
+.result.win{animation:glow .8s infinite alternate}
+@keyframes glow{from{text-shadow:0 0 3px gold}to{text-shadow:0 0 18px gold,0 0 28px orange}}
+.prizes{color:#aebbd0;font-size:12px;line-height:1.8}
+.close{background:#34445c;color:white;margin-top:18px}
+@media(max-width:550px){.hero h1{font-size:30px}.panel{padding:16px}.reel{height:85px;font-size:40px}.machine{padding:12px}.logo{font-size:21px}}
 </style>
 </head>
 <body>
+
 <header>
 <div class="logo">CASINO <span>LAN</span></div>
 <div class="balance">🪙 Fichas: <span id="balance">1000</span></div>
 </header>
+
 <nav>
 <a href="#">Inicio</a>
 <a href="#games">Juegos</a>
 <a href="#games">Promociones</a>
 </nav>
+
 <section class="hero">
 <h1>BIENVENIDO A <span>CASINO LAN</span></h1>
-<p>La experiencia del casino, ahora en tu pantalla.</p>
+<p>Una experiencia de casino virtual con juegos y animaciones.</p>
 </section>
+
 <main class="games" id="games">
 <h2>🎰 Nuestros juegos</h2>
 <div class="grid">
+
 <div class="game">
 <div class="cover">🎰</div>
 <h3>Tragamonedas</h3>
-<p>Probá tu suerte y conseguí premios.</p>
+<p>Rodillos animados y grandes combinaciones.</p>
 <button onclick="openGame('slots')">JUGAR</button>
 </div>
+
 <div class="game">
 <div class="cover">🎡</div>
 <h3>Ruleta</h3>
-<p>Elegí rojo o negro y girá la ruleta.</p>
+<p>Elegí tu color y probá tu suerte.</p>
 <button onclick="openGame('roulette')">JUGAR</button>
 </div>
+
 <div class="game">
 <div class="cover">🃏</div>
 <h3>Blackjack</h3>
-<p>Acercate a 21 sin pasarte.</p>
-<button onclick="openGame('blackjack')">PRÓXIMAMENTE</button>
+<p>El desafío de llegar a 21.</p>
+<button onclick="alert('Blackjack estará disponible próximamente.')">PRÓXIMAMENTE</button>
 </div>
+
 </div>
 </main>
+
 <div class="modal" id="modal">
 <div class="panel">
-<h2 id="gameTitle">Tragamonedas</h2>
+
+<h2 id="gameTitle">🎰 TRAGAMONEDAS</h2>
+<p class="subtitle">¡Tres rodillos, una oportunidad de ganar!</p>
+
 <div id="slotArea">
-<div class="reels"><span id="r1">🍒</span><span id="r2">🍋</span><span id="r3">🍇</span></div>
+<div class="machine">
+<div class="machine-title">★ CASINO LAN ★</div>
+<div class="reels">
+<div class="reel" id="r1">🍒</div>
+<div class="reel" id="r2">💎</div>
+<div class="reel" id="r3">7️⃣</div>
 </div>
-<p id="result">¡Probá tu suerte!</p>
-<button id="playButton" onclick="play()">GIRAR - 50 FICHAS</button>
-<br><br>
-<button onclick="closeGame()" style="background:#34445d;color:white">VOLVER</button>
+<div class="lights">● ● ● ● ● ● ●</div>
+</div>
+
+<div class="bet-label">SELECCIONÁ TU APUESTA</div>
+<div class="bet-area">
+<button onclick="setBet(10)" class="bet">10</button>
+<button onclick="setBet(25)" class="bet">25</button>
+<button onclick="setBet(50)" class="bet selected">50</button>
+<button onclick="setBet(100)" class="bet">100</button>
 </div>
 </div>
+
+<div id="rouletteArea" style="display:none">
+<div style="font-size:90px;margin:20px" id="rouletteWheel">🎡</div>
+<div class="bet-area">
+<button onclick="setColor('rojo')">🔴 ROJO</button>
+<button onclick="setColor('negro')">⚫ NEGRO</button>
+</div>
+</div>
+
+<p class="result" id="result">¡Mucha suerte!</p>
+
+<button class="spin-button" id="playButton" onclick="play()">GIRAR 🎰</button>
+
+<div class="prizes">
+<strong>PREMIOS</strong><br>
+Tres sietes: x10 | Tres iguales: x5<br>
+Dos iguales: x2
+</div>
+
+<button class="close" onclick="closeGame()">VOLVER AL CASINO</button>
+</div>
+</div>
+
+<footer>CASINO LAN © 2026 - Plataforma de entretenimiento virtual</footer>
+
 <script>
 let balance=1000;
+let bet=50;
 let currentGame='';
+let selectedColor='rojo';
+let spinning=false;
+
+const symbols=['🍒','🍋','🍇','🔔','💎','7️⃣'];
+
 function updateBalance(){
 document.getElementById('balance').textContent=balance;
 }
+
 function openGame(game){
-if(game==='blackjack'){alert('Blackjack estará disponible próximamente.');return;}
 currentGame=game;
 document.getElementById('modal').style.display='flex';
-document.getElementById('gameTitle').textContent=game==='slots'?'🎰 Tragamonedas':'🎡 Ruleta';
-document.getElementById('slotArea').style.display=game==='slots'?'block':'none';
-document.getElementById('playButton').textContent=game==='slots'?'GIRAR - 50 FICHAS':'JUGAR - 50 FICHAS';
-document.getElementById('result').textContent='¡Buena suerte!';
+document.getElementById('gameTitle').textContent=
+game==='slots'?'🎰 TRAGAMONEDAS':'🎡 RULETA';
+document.getElementById('slotArea').style.display=
+game==='slots'?'block':'none';
+document.getElementById('rouletteArea').style.display=
+game==='roulette'?'block':'none';
+document.getElementById('playButton').textContent=
+game==='slots'?'GIRAR 🎰':'GIRAR RULETA 🎡';
+document.getElementById('result').textContent='¡Mucha suerte!';
 }
+
 function closeGame(){
+if(spinning)return;
 document.getElementById('modal').style.display='none';
 }
+
+function setBet(value){
+bet=value;
+document.querySelectorAll('.bet').forEach(button=>{
+button.classList.toggle('selected',Number(button.textContent)===value);
+});
+}
+
+function setColor(color){
+selectedColor=color;
+document.getElementById('result').textContent='Apostaste al '+color+'.';
+}
+
 function play(){
-if(balance<50){document.getElementById('result').textContent='No tenés fichas suficientes.';return;}
-balance-=50;
-if(currentGame==='slots'){
-let symbols=['🍒','🍋','🍇','🔔','💎','7️⃣'];
-let reels=[1,2,3].map(()=>symbols[Math.floor(Math.random()*symbols.length)]);
-document.getElementById('r1').textContent=reels[0];
-document.getElementById('r2').textContent=reels[1];
-document.getElementById('r3').textContent=reels[2];
-if(reels[0]===reels[1]&&reels[1]===reels[2]){
-balance+=500;
-document.getElementById('result').textContent='¡JACKPOT! Ganaste 500 fichas.';
-}else if(reels[0]===reels[1]||reels[1]===reels[2]||reels[0]===reels[2]){
-balance+=100;
-document.getElementById('result').textContent='¡Bien! Ganaste 100 fichas.';
-}else{
-document.getElementById('result').textContent='No hubo premio. ¡Intentá otra vez!';
+if(spinning)return;
+if(balance<bet){
+document.getElementById('result').textContent='No tenés fichas suficientes.';
+return;
 }
-}else{
-let red=Math.random()<0.5;
-let bet=prompt('Elegí rojo o negro:');
-if(bet&&bet.toLowerCase()=== (red?'rojo':'negro')){
-balance+=100;
-document.getElementById('result').textContent='¡Ganaste! La bola cayó en '+(red?'rojo':'negro')+'.';
-}else{
-document.getElementById('result').textContent='La bola cayó en '+(red?'rojo':'negro')+'. ¡Suerte la próxima!';
-}
-}
+balance-=bet;
 updateBalance();
+spinning=true;
+document.getElementById('playButton').disabled=true;
+document.getElementById('result').classList.remove('win');
+
+if(currentGame==='slots')spinSlots();
+else spinRoulette();
+}
+
+function spinSlots(){
+let reels=[
+document.getElementById('r1'),
+document.getElementById('r2'),
+document.getElementById('r3')
+];
+
+reels.forEach(reel=>reel.classList.add('spinning'));
+
+let counter=0;
+let interval=setInterval(()=>{
+reels.forEach(reel=>{
+reel.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+});
+counter++;
+if(counter>=18){
+clearInterval(interval);
+finishSlots(reels);
+}
+},100);
+}
+
+function finishSlots(reels){
+let result=reels.map(reel=>
+symbols[Math.floor(Math.random()*symbols.length)]
+);
+
+reels.forEach((reel,index)=>{
+reel.textContent=result[index];
+reel.classList.remove('spinning');
+});
+
+let win=0;
+if(result[0]===result[1]&&result[1]===result[2]){
+win=bet*(result[0]==='7️⃣'?10:5);
+}else if(result[0]===result[1]||
+result[1]===result[2]||
+result[0]===result[2]){
+win=bet*2;
+}
+
+balance+=win;
+updateBalance();
+
+let message=win>0?
+'🎉 ¡GANASTE '+win+' FICHAS!':
+'No hubo premio. ¡Probá nuevamente!';
+
+if(win>=bet*5){
+message='🏆 ¡PREMIO MAYOR! '+win+' FICHAS';
+}
+showResult(message,win>0);
+}
+
+function spinRoulette(){
+let wheel=document.getElementById('rouletteWheel');
+wheel.style.transition='transform 3s cubic-bezier(.12,.7,.18,1)';
+wheel.style.transform='rotate(1440deg)';
+
+setTimeout(()=>{
+wheel.style.transition='none';
+wheel.style.transform='rotate(0deg)';
+
+let red=Math.random()<0.5;
+let result=red?'rojo':'negro';
+
+let win=result===selectedColor?bet*2:0;
+balance+=win;
+updateBalance();
+
+showResult(win>0?
+'🎉 ¡GANASTE! '+win+' FICHAS. Salió '+result:
+'Salió '+result+'. ¡Suerte la próxima!',win>0);
+},3100);
+}
+
+function showResult(message,won){
+document.getElementById('result').textContent=message;
+document.getElementById('result').classList.toggle('win',won);
+document.getElementById('playButton').disabled=false;
+spinning=false;
 }
 </script>
-<footer>CASINO LAN © 2026 - Plataforma de entretenimiento virtual</footer>
 </body>
 </html>
