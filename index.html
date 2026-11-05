@@ -150,13 +150,33 @@ footer{text-align:center;color:#75849c;padding:40px}
 </div>
 </div>
 
+
 <div id="rouletteArea" style="display:none">
-<div style="font-size:90px;margin:20px" id="rouletteWheel">🎡</div>
-<div class="bet-area">
-<button onclick="setColor('rojo')">🔴 ROJO</button>
-<button onclick="setColor('negro')">⚫ NEGRO</button>
+  <div class="roulette-table">
+    <h3 style="color:#f8d77b">RULETA EUROPEA</h3>
+    <div class="wheel-wrap">
+      <div class="wheel" id="realWheel">
+        <div class="wheel-center">★</div>
+      </div>
+      <div class="ball-track" id="ballTrack">
+        <div class="ball"></div>
+      </div>
+    </div>
+    <div style="color:#f8d77b;font-size:13px">0 - 36 · RULETA EUROPEA</div>
+  </div>
+
+  <p>Elegí tu apuesta:</p>
+  <div class="roulette-options">
+    <button id="redBet" onclick="setColor('rojo')">🔴 ROJO</button>
+    <button id="blackBet" onclick="setColor('negro')">⚫ NEGRO</button>
+    <button id="evenBet" onclick="setColor('par')">PAR</button>
+    <button id="oddBet" onclick="setColor('impar')">IMPAR</button>
+  </div>
+
+  <p style="color:#f8d77b">O elegí un número (paga 35 a 1):</p>
+  <div class="number-grid" id="numberGrid"></div>
 </div>
-</div>
+
 
 <p class="result" id="result">¡Mucha suerte!</p>
 
