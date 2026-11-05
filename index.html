@@ -52,6 +52,30 @@ footer{text-align:center;color:#75849c;padding:40px}
 .prizes{color:#aebbd0;font-size:12px;line-height:1.8}
 .close{background:#34445c;color:white;margin-top:18px}
 @media(max-width:550px){.hero h1{font-size:30px}.panel{padding:16px}.reel{height:85px;font-size:40px}.machine{padding:12px}.logo{font-size:21px}}
+  
+.roulette-table{padding:15px;background:linear-gradient(145deg,#123e30,#09271f);border:2px solid #c79b42;border-radius:18px;margin:15px auto}
+.wheel-wrap{width:290px;height:290px;margin:15px auto;position:relative}
+.wheel{width:100%;height:100%;border-radius:50%;position:relative;border:9px solid #d8ad52;background:radial-gradient(circle,#c89c45 0 13%,#58370e 14% 17%,#d6ae58 18% 22%,#102c20 23%);box-shadow:0 0 25px #000,inset 0 0 12px #000;transition:transform 5s cubic-bezier(.12,.7,.08,1)}
+.wheel-number{position:absolute;width:24px;height:24px;left:50%;top:50%;margin:-12px;font-size:10px;font-weight:bold;color:white;text-align:center;line-height:24px;border-radius:50%;transform-origin:center}
+.wheel-number.red{background:#b8202c}
+.wheel-number.black{background:#101010}
+.wheel-number.green{background:#087d43}
+.wheel-center{position:absolute;inset:39%;border-radius:50%;background:radial-gradient(circle,#f9dc8b,#96651d 65%,#3e260a);border:4px solid #e6c46d;z-index:2;display:grid;place-items:center;font-size:24px}
+.ball-track{position:absolute;inset:5px;border-radius:50%;z-index:4;pointer-events:none}
+.ball{position:absolute;top:0;left:50%;margin-left:-6px;width:12px;height:12px;border-radius:50%;background:radial-gradient(circle at 30% 25%,white,#aaa);box-shadow:0 0 8px white}
+.ball-track.moving{animation:ballOrbit 2s linear infinite}
+@keyframes ballOrbit{to{transform:rotate(360deg)}}
+.roulette-options{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:14px 0}
+.roulette-options button{padding:11px 15px;background:#263b35;color:white;border:1px solid #a8a88a}
+.roulette-options button.selected{background:#e3bd5b;color:#211707}
+.number-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;margin:12px 0}
+.number-grid button{padding:8px 2px;color:white;border:1px solid #ffffff55}
+.number-grid .red{background:#b8202c}
+.number-grid .black{background:#111}
+.number-grid .green{background:#087d43}
+.number-grid button.selected{outline:3px solid #ffe28a;outline-offset:1px}
+@media(max-width:400px){.wheel-wrap{width:250px;height:250px}}
+
 </style>
 </head>
 <body>
